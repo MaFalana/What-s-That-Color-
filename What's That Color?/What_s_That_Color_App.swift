@@ -8,10 +8,19 @@
 import SwiftUI
 
 @main
-struct What_s_That_Color_App: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+struct What_s_That_Color_App: App
+{
+    @StateObject var colorFunc = ColorFunctions.shared
+    @StateObject var paletteFunc = PaletteManager.shared
+    
+    var body: some Scene
+    {
+        WindowGroup
+        {
+            tabView()
+                .environmentObject(colorFunc)
+                .environmentObject(paletteFunc)
+            //.textSelection(.enabled)
         }
     }
 }
